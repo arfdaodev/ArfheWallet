@@ -11,22 +11,7 @@ function App() {
   return (
     <>
     <div className="container">
-      <div className='header'>
-      </div>
-      <button className='create-to-import-button'
-onClick={() => {
-   navigate('/crypto')
-}}
->Kripto</button>
-      <button className='create-to-import-button'
-onClick={() => {
-   navigate('/NFT')
-}}
->NFT</button>
-
-
-
-      
+        a
       <Bottommenu />
       </div>
     </>
