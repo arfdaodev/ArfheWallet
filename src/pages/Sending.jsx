@@ -47,4 +47,4 @@ const SendScreen = () => {
   );
 };
 
-export default SendScreen;
+export default SendScreen;

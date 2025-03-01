@@ -10,11 +10,13 @@
     width: 90%;
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #888;
+    border: 2px solid blue;
     border-radius: 10px;
     text-align: center;
     background: white;
     font-size: 16px;
+    border-radius: 23.5px;
+    border: 2px solid blue;
   }
   
   .transfer-simulation {
@@ -24,7 +26,8 @@
     text-align: center;
     width: 90%;
     margin-top: 15px;
-    border: 1px solid #888;
+        border-radius: 23.5px;
+    border: 2px solid blue;
   }
   
   .transfer-simulation p {

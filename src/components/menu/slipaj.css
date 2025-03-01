@@ -47,7 +47,7 @@
   
   /* Sidebar açıldığında */
   .sidebar.open {
-    left: 50px;
+    left: 500px;
   }
   
   /* Menü başlığı */
@@ -57,16 +57,19 @@
     align-items: center;
     margin-bottom: 15px !important;
     transform: translateY(5px) !important;
+    
   }
   
   /* Menü içeriği */
   .sidebar-menu {
     list-style: none;
     padding: 0;
+    
   }
   
   .sidebar-menu li {
     padding: 10px 0;
+    
   }
   
   .sidebar-menu a {
@@ -75,6 +78,7 @@
     font-size: 16px;
     font-weight: bold;
     transition: color 0.3s ease;
+      left: 10px !important;
   }
   
   .sidebar-menu a:hover {
@@ -83,5 +87,6 @@
 
   .slipaj {
     margin-bottom: 15px !important;
+    left: 10px !important;
     transform: translateY(5px) !important;
   }
