@@ -2,8 +2,18 @@ import { useState } from 'react'
 import './Receiving.css'
 import React from 'react'
 import Bottommenu from "../components/menu/Bottommenu";
+import {useEffect } from "react";
 
 const Receiving = () => {
+  const [walletAddress, setWalletAddress] = useState("");
+
+  useEffect(() => {
+    // LocalStorage'dan cüzdan adresini al
+    const savedAddress = localStorage.getItem("walletAddress");
+    if (savedAddress) {
+      setWalletAddress(savedAddress);
+    }
+  }, []);
   return (
     <>
     <div className="container">
@@ -24,7 +34,7 @@ const Receiving = () => {
 
       {/* Cüzdan Adresi */}
       <div className="wallet-address">
-        0xa25g5de5g451vvvd75q5frru5kdf5h5lDhrr
+      {walletAddress ? walletAddress : "Cüzdan adresi bulunamadı!"}
       </div>
 
      

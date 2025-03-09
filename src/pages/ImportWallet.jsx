@@ -1,12 +1,28 @@
-import { useState } from 'react'
+import React ,{ useState } from 'react'
 import './ImportWallet.css'
-import Importwalletbutton2 from '../components/button/Loginimportwalletbutton'
+import { ethers } from "ethers";
 import BackButton from '../components/button/BackButton'
+import { useNavigate } from "react-router-dom";
+import { Button } from 'antd';
 
-function App() {
-  const [count, setCount] = useState(0)
-  
+function App({setWallet}) {
+  const [count, setCount] = useState(0);
+  const [mnemonic, setMnemonic] = useState("");
+  const navigate = useNavigate();
 
+  async function importWallet() {
+    try {
+      const wallet = ethers.Wallet.fromPhrase(mnemonic.trim());
+      console.log("✅ Oluşturulan cüzdan adresi:", wallet.address);
+      localStorage.setItem("walletAddress", wallet.address); // Cüzdan adresini kalıcı olarak sakla
+
+      setWallet(wallet.address); // Cüzdanı state'e kaydet
+      navigate("/createpassword"); // Başarılıysa ana sayfaya yönlendir
+    } catch (error) {
+      console.error("Geçersiz mnemonic:", error);
+      alert("Geçersiz mnemonic! Lütfen doğru kelimeleri girin.");
+    }
+  }
   return (
     <>
     <div className="container">
@@ -19,13 +35,16 @@ function App() {
 
       <div className='content'>
     <input
-      type="password"
+      type="text"
       className="seed-input"
       placeholder="Gizli Kelimeleri Giriniz"
+      value={mnemonic}
+      onChange={(e) => setMnemonic(e.target.value)}
+        rows={2}
     />
 
     <input
-      type="password"
+      type="text"
       className="privatekey-input"
       placeholder="Gizli Anahtarı Giriniz"
     />
@@ -34,7 +53,9 @@ function App() {
       </div>
       <div className='content'>
        
-       <Importwalletbutton2 />
+      <Button className="importbutton3" type="primary" onClick={importWallet}>
+        İçe aktar
+      </Button>
        <BackButton/>
      </div>
      

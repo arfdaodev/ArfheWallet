@@ -16,9 +16,7 @@ body{
     font-weight: bold;
     margin-bottom: 16px;
     position: relative;
-    top: -130px;
-    left: 110px;
-    
+    top: -300px;
   }
   
   /* Kelime kutularını içeren alan */
@@ -36,7 +34,7 @@ body{
     background-color: #ffffff;
     width: 133px;
     height: 20px;
-    border-radius: 8px;
+    border-radius: 8px ;
     font-size: 17px;
     font-weight: bold;
     border-radius: 23.5px;
@@ -48,4 +46,49 @@ position: relative;
 top: 150px;
 
 
+}
+.mnemonicolusturcu {
+  width: 215px;
+  height: 39.1px;
+  background-color: #003C9D;
+  border: none;
+  border-radius: 23.5px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600; /* Semi-Bold */
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  top: -20px;
+}
+.importwalletmnemonic{
+  width: 215px;
+  height: 39.1px;
+  background-color: #003C9D;
+  border: none;
+  border-radius: 23.5px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600; /* Semi-Bold */
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  top: 275px;
+}
+.mnemonic {
+width: 338px;
+height: 278px;
+border-radius: 23.5px;
+border: 2px solid blue; 
+background-color: white;
+justify-content: center;
+align-items: center;
+font-size: 18px;
+font-weight: bold;
+position: absolute;
+top: 150px; /* Y Pozisyonu */
+left: 1700px; /* X Pozisyonu */
+transform: translateX(-1667px);
 }

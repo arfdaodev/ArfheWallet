@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './CreateNewWallet.css'
-import Createwalletbutton from '../components/button/Createwalletbutton'
-import Importwalletbutton from '../components/button/Importwalletbutton'
 import CreateWith12Word from '../components/button/Createwith12word'
 import CreateWith24Word from '../components/button/Createwith24word'
 import BackButton from "../components/button/BackButton";
-
+import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { Button } from 'antd';
+import generateWallet from "./CreateWith12Word"
 function App() {
   const [count, setCount] = useState(0)
   
@@ -20,7 +20,13 @@ function App() {
       
 
       </div>
-
+      <div className='alert'>
+        <ExclamationCircleOutlined style= {{fontsize:"10px"}} />
+      <div>
+      Once you generate the seed phrase, save it securely in 
+      order to recover your wallet in the future!
+      </div>
+      </div>
       <div className='content'>
        
         <CreateWith12Word />

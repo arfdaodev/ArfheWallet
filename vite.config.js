@@ -14,7 +14,10 @@ export default defineConfig({
       input: 'index.html', // DOĞRU KULLANIM
       output: {
         dir: 'dist',
-        entryFileNames: '[name].js'
+        entryFileNames: '[name].js',
+        manualChunks: {
+          vendor: ["react", "react-dom", "ethers", "antd"],
+        },
       }
     }
   }

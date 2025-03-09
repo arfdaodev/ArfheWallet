@@ -6,6 +6,15 @@
   top: 50px;
 }
 
+.alert {
+  color: #ce0e0e;
+  border: 1px solid #ce0e0e; 
+  padding: 10px;
+  border-radius: 15px;
+  flex-direction: column;
+  position: absolute;
+  top: 650px;
+}
 .app-logo {
   width: 200px;
   height: auto;

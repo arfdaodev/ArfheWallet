@@ -1,6 +1,6 @@
 
-import { useState } from "react";
-import {Routes, Route, Navigate} from 'react-router-dom'
+import { useState , useEffect} from "react";
+import {Routes, Route, Navigate , useNavigate, useAsyncError} from 'react-router-dom'
 import FirstLogin from './pages/FirstLogin'
 import CreateNewWallet from './pages/CreateNewWallet'
 import Home from './pages/Home'
@@ -20,6 +20,7 @@ import CreateWith24Word from './pages/CreateWith24Word'
 import Account from './pages/Account'
 import NFT from './pages/NFT'
 import Crypto from './pages/Crypto'
+import '@ant-design/v5-patch-for-react-19';
  
 
 
@@ -29,15 +30,37 @@ import Crypto from './pages/Crypto'
 
 
 function App() {
+  const [wallet, setWallet] = useState(null);
+  const [walletAddress, setWalletAddress] = useState(null);
+  const [seedPhrase, setSeedPhrase] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const savedWallet = localStorage.getItem("walletAddress");
+    if (savedWallet) {
+      setWalletAddress(savedWallet);
+    }
+  }, []);
+
+  useEffect(() => {
+    const WalletExists =
+localStorage.getItem("wallet");
+    if  (WalletExists) {
+      navigate("/home");
+    } else {
+      navigate("/");
+    }
+  },[]);
+  
+    
+      
   return (
     <div>
      
       
       <Routes>
-        <Route path="/" element={
-          localStorage.getItem("isLoggedIn") === "true" ? <Navigate to="/login" /> : <FirstLogin />
-        } />
-        
+       
+        <Route path='/' element={<FirstLogin/>} exact/>
         <Route path='/createwallet' element={<CreateNewWallet/>} exact/>
         <Route path='/account' element={<Account/>} exact/>
         <Route path='/home' element={<Home/>} exact />
@@ -52,10 +75,10 @@ function App() {
         <Route path='/revoke' element={<Revoke/>} exact />
         <Route path='/sending' element={<Sending/>} exact/>
         <Route path='/swap' element={<Swap/>} exact />
-        <Route path='/importwallet' element={<ImportWallet/>} exact />
+        <Route path='/importwallet' element={<ImportWallet setWallet={setWallet}/>} exact />
         <Route path='/account/importwallet' element={<ImportWallet/>} exact />
-        <Route path='/createwallet/createwith12' element={<CreateWith12Word/>} exact />
-        <Route path='/createwallet/createwith24' element={<CreateWith24Word/>} exact />
+        <Route path='/createwallet/createwith12' element={<CreateWith12Word setSeedPhrase={setSeedPhrase} setWallet={setWallet}/>} exact />
+        <Route path='/createwallet/createwith24' element={<CreateWith24Word setWallet={setWallet} setSeedPhrase={setSeedPhrase}/>} exact />
         <Route path='/createwallet/createwith12/importwallet' element={<ImportWallet />} exact />
         <Route path='/createwallet/createwith24/importwallet' element={<ImportWallet />} exact />
         <Route path='/CreatePassword/createwallet' element={<Login/>} exact />

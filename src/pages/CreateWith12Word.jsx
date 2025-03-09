@@ -1,30 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CreateWith12Word.css";
 import CreateWith12toImport from "../components/button/CreateWith12toImport";
 import BackButton from "../components/button/BackButton";
+import { useNavigate } from "react-router-dom";
+import { ethers } from "ethers";
+import { Button } from "antd";
+import { Navigate } from "react-router-dom";
 
 
+function CreateWith12Word  ({setWallet, setSeedPhrase})  {
+  const [newSeedPhrase, setNewSeedPhrase] = useState(null);
+  const navigate = useNavigate();
 
-const CreateWith12Word = () => {
-  const words = [
-    "aydan", "devin", "kang", "sabak", "crack", "orga",
-    "ming", "san", "balaban", "orgun", "babat", "edil"
-  ];
+  function generateWallet12(){
+    const wallet = ethers.Wallet.createRandom();
+    if (!wallet.mnemonic) {
+      console.error("Mnemonic null döndü");
+      return;
+    }
+    const mnemonic = wallet.mnemonic.phrase;
+    console.log("mnemonic:", wallet.address)
+    setNewSeedPhrase(mnemonic);
+  }
+    // newSeedPhrase güncellendiğinde cüzdanı oluştur
+
+
+  function setWalletAndMnemonic(){
+    setSeedPhrase(newSeedPhrase);
+    setWallet(ethers.Wallet.fromPhrase(newSeedPhrase).address);
+    navigate("/importwallet");
+  }
 
   return (
     <div className="container">
       <div>
         <h2 className="header12"> 12 Kelime</h2>
-        <div className="word-container">
-          {words.map((word, index) => (
-            <div key={index} className="word-box">
-              {index + 1}. {word}
-            </div>
-          ))}
-        </div>
+        
         
       </div>
-      <CreateWith12toImport />
+      <div className="mnemonic">
+        <p>{newSeedPhrase}</p>
+     
+      </div>
+      <Button
+        className="mnemonicolusturcu"
+        type="primary"
+        onClick={() => generateWallet12()}>Kelimeleri Oluştur</Button>
+
+            <Button
+        className="importwalletmnemonic"
+        type="default"
+        onClick={() => setWalletAndMnemonic()}>Cüzdan Oluştur</Button>
       <BackButton />
     </div>
   );
