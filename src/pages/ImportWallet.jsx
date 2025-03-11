@@ -2,14 +2,17 @@ import React ,{ useState } from 'react'
 import './ImportWallet.css'
 import { ethers } from "ethers";
 import BackButton from '../components/button/BackButton'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from 'antd';
 
-function App({setWallet}) {
+function App({setWallet }) {
   const [count, setCount] = useState(0);
-  const [mnemonic, setMnemonic] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const [mnemonic, setMnemonic] = useState("");
+  
 
+  console.log("Mnemonikler:", mnemonic);
   async function importWallet() {
     try {
       const wallet = ethers.Wallet.fromPhrase(mnemonic.trim());
@@ -17,7 +20,7 @@ function App({setWallet}) {
       localStorage.setItem("walletAddress", wallet.address); // Cüzdan adresini kalıcı olarak sakla
 
       setWallet(wallet.address); // Cüzdanı state'e kaydet
-      navigate("/createpassword"); // Başarılıysa ana sayfaya yönlendir
+      navigate("/createpassword" , { state: { mnemonic } }); // Başarılıysa ana sayfaya yönlendir
     } catch (error) {
       console.error("Geçersiz mnemonic:", error);
       alert("Geçersiz mnemonic! Lütfen doğru kelimeleri girin.");

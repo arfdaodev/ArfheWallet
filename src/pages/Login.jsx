@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import { verifyPassword, decryptData } from "../utils/security";
 
-function Login({ setWallet }) {
+function Login() {
   const [inputPassword, setInputPassword] = useState("");
   const navigate = useNavigate();
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     // Kullanıcı zaten giriş yapmışsa, direkt ana sayfaya yönlendir
@@ -15,31 +16,24 @@ function Login({ setWallet }) {
   }, [navigate]);
 
   const handleLogin = () => {
-    const savedPassword = localStorage.getItem("walletPassword"); // Kayıtlı şifreyi al
+    const savedPassword = localStorage.getItem("walletPasswordHash"); // Kayıtlı şifreyi al
 
     if (!savedPassword) {
       alert("Kayıtlı şifre bulunamadı!");
       return;
     }
 
-    if (inputPassword === savedPassword) {
-      localStorage.setItem("isLoggedIn", "true");
-      alert("✅ Giriş başarılı!");
-
-      // 🌟 Kullanıcının cüzdan adresini al ve konsola yazdır
-      const savedWalletAddress = localStorage.getItem("walletAddress");
-
-      if (savedWalletAddress) {
-        console.log("✅ Kullanıcının cüzdan adresi:", savedWalletAddress);
-      } else {
-        console.warn("❌ Cüzdan adresi kayıtlı değil!");
-      }
-
-      navigate("/home");
-    } else {
-      alert("❌ Yanlış şifre! Lütfen tekrar deneyin.");
-    }
-  };
+     // Şifre doğruysa, mnemonikleri çözüp gösterelim
+     const encryptedMnemonic = localStorage.getItem("encryptedMnemonic");
+     if (!encryptedMnemonic) {
+       alert("Hata: Şifrelenmiş mnemonikler bulunamadı!");
+       return;
+     }
+ 
+     const decryptedMnemonic = decryptData(encryptedMnemonic, password);
+     alert(`Cüzdanınız açıldı! `);
+     navigate("/home");
+   };
 
   return (
     <div className="container">
