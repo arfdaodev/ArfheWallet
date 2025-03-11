@@ -14,20 +14,28 @@
   transform: translateY(0px);
 }
 
-.account-title {
-  font-size: 14px;
+.account-title2 {
+  font-size: 13px;
   font-weight: bold;
   margin: 0;
   position: relative;
-  left: 44%;
+  left: 12%;
 }
 
-.account-name {
+.accountname {
+  font-size: 13px;
+  font-weight: bold;
+  position: relative;
+  margin: 0;
+  left: 110px;
+  
+}
+
+.wallet-address2 {
   font-size: 12px;
   position: relative;
-  top: 5px;
-  transform: translateX(-161px);
-
+  top: 15px;
+  left: -40px;
 }
 
 .network-badge {

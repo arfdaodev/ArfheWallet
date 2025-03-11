@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./CreateWith12Word.css";
-import CreateWith12toImport from "../components/button/CreateWith12toImport";
 import BackButton from "../components/button/BackButton";
 import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
@@ -19,7 +18,7 @@ function CreateWith12Word  ({setWallet, setSeedPhrase})  {
       return;
     }
     const mnemonic = wallet.mnemonic.phrase;
-    console.log("mnemonic:", wallet.address)
+    console.log("adres:", wallet.address)
     setNewSeedPhrase(mnemonic);
   }
     // newSeedPhrase güncellendiğinde cüzdanı oluştur

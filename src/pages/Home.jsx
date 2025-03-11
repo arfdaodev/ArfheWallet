@@ -4,16 +4,26 @@ import Homereceivebutton from '../components/button/Homereceivingbutton';
 import Bottommenu from "../components/menu/Bottommenu";
 import { Homesendbutton, HomeDiscoverybutton, HomeHistorybutton, HomeRevokebutton } from "../components/button/Homesendbutton";
 import Sidebar from "../components/menu/Sidebar.jsx";
+import { useState, useEffect } from "react";
 
 const Home = () => {
- 
+  const [walletAddress, setWalletAddress] = useState("");
+    useEffect(() => {
+        // LocalStorage'dan cüzdan adresini al
+        const savedAddress = localStorage.getItem("walletAddress");
+        if (savedAddress) {
+          setWalletAddress(savedAddress);
+        }
+    }, []);
+
   return (
     <div className="container">
-      
+     
       {/* 📌 Üst Kısım - Hesap ve Network */}
       <div className="top-section">
-        <h3 className="account-title">Hesap</h3>
-        <p className="account-name">biar.arf</p>
+        <h3 className="account-title2">Hesap</h3>
+        <p className="accountname">biar.arf</p>
+        <p className="wallet-address2">{walletAddress ? walletAddress : "Cüzdan adresi bulunamadı!"}</p>
         <div className="network-badge">
           Network : <span className="network-name">fhEVM</span>
         </div>
