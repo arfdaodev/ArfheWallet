@@ -12,7 +12,7 @@ function App({setWallet }) {
   const [mnemonic, setMnemonic] = useState("");
   
 
-  console.log("Mnemonikler:", mnemonic);
+
   async function importWallet() {
     try {
       const wallet = ethers.Wallet.fromPhrase(mnemonic.trim());

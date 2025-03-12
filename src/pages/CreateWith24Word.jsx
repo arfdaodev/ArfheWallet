@@ -14,7 +14,7 @@ function CreateWith24Word({ setWallet, setSeedPhrase }) {
     const entropy = ethers.randomBytes(32); // 32 byte = 24 kelimelik entropy
     const mnemonic = Mnemonic.fromEntropy(entropy).phrase;
 
-    console.log("adres:", wallet.address);
+  
     setNewSeedPhrase(mnemonic);
   }
 

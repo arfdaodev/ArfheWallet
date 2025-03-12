@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Bottommenu from "../components/menu/Bottommenu";
 import "./Account.css";
 import { Link } from "react-router-dom";
+import Slipaj from "../components/menu/slipaj";
 
 
 const Account = () => {

@@ -10,7 +10,7 @@ const CreatePassword = () => {
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  console.log("Mnemonikler:", mnemonic);
+
   const handleSavePassword = () => {
     if (!mnemonic) {
       alert("Mnemonikler alınamadı! Lütfen tekrar deneyin.");
