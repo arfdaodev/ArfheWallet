@@ -34,8 +34,12 @@ function App() {
   const navigate = useNavigate();
   const [blockNumber, setBlockNumber] = useState(null);
 
-  const provider = new JsonRpcProvider("https://eth-holesky.g.alchemy.com/v2/-UwtQKs82xJefcySHhrajydYbUX0leZ8");
-
+  const providers = {
+    holesky: new JsonRpcProvider("https://eth-holesky.g.alchemy.com/v2/-UwtQKs82xJefcySHhrajydYbUX0leZ8"),
+    sepolia: new JsonRpcProvider("https://eth-sepolia.g.alchemy.com/v2/-UwtQKs82xJefcySHhrajydYbUX0leZ8"),
+  };
+  
+  
   useEffect(() => {
     const fetchBlockNumber = async () => {
       const block = await provider.getBlock("latest");

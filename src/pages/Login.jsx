@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { decryptData } from "../utils/security";
 import { getWalletData } from "../utils/secureStorage";
-import './Login.css'
+import "./Login.css";
 
 function Login() {
   const [inputPassword, setInputPassword] = useState("");

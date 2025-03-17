@@ -14,7 +14,8 @@
         "default_popup": "index.html"
     },
     "permissions": [
-        "scripting"
+        "scripting",
+        "storage"
     ],
     "host_permissions":[
         "http://*/*",
