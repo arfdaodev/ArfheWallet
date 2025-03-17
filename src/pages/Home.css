@@ -72,6 +72,8 @@
   border: 3px solid white;
   object-fit: cover;
   z-index: 11;
+  position: relative;
+  left: -50px;
 }
 
 .balance {
@@ -81,7 +83,7 @@
   padding: 10px 20px;
   position: relative;
   border-radius: 10px;
-  left: -40px;
+  top: 60px;
   z-index: 10;
   transform: translateY(-20px);
 }

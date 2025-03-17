@@ -5,9 +5,60 @@ import Bottommenu from "../components/menu/Bottommenu";
 import { Homesendbutton, HomeDiscoverybutton, HomeHistorybutton, HomeRevokebutton } from "../components/button/Homesendbutton";
 import Sidebar from "../components/menu/Sidebar.jsx";
 import { useState, useEffect } from "react";
+import { ethers } from "ethers";
+import { getWalletData } from "../utils/secureStorage";
 
 const Home = () => {
   const [walletAddress, setWalletAddress] = useState("");
+  const [balance, setBalance] = useState("Yükleniyor...");
+  const [error, setError] = useState("");
+
+  const provider = new ethers.JsonRpcProvider("https://eth-holesky.g.alchemy.com/v2/-UwtQKs82xJefcySHhrajydYbUX0leZ8");
+
+  useEffect(() => {
+    const fetchWalletData = async () => {
+      try {
+        // **Şifre istemeden cüzdan adresini al (Eğer zaten giriş yapıldıysa)**
+        const savedWallet = await getWalletData(localStorage.getItem("walletPassword"));
+        
+        if (!savedWallet || !savedWallet.privateKey) {
+          setError("Cüzdan adresi bulunamadı!");
+          return;
+        }
+
+        const wallet = new ethers.Wallet(savedWallet.privateKey);
+        setWalletAddress(wallet.address);
+      } catch (err) {
+        console.error("Cüzdan alınırken hata:", err);
+        setError("Cüzdan verileri çözülemedi!");
+      }
+    };
+
+    fetchWalletData();
+  }, []);
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      if (!walletAddress) return;
+
+      try {
+        const balanceWei = await provider.getBalance(walletAddress);
+        setBalance(ethers.formatEther(balanceWei) + " ETH"); // Wei -> HoloSky Token
+      } catch (error) {
+        console.error("Bakiye alınırken hata oluştu:", error);
+        setBalance("Hata!");
+      }
+    };
+
+    fetchBalance();
+    
+    // 🔥 **Her 10 saniyede bir bakiyeyi güncelle**
+    const interval = setInterval(fetchBalance, 10000);
+
+    return () => clearInterval(interval);
+  }, [walletAddress]);
+
+
     useEffect(() => {
         // LocalStorage'dan cüzdan adresini al
         const savedAddress = localStorage.getItem("walletAddress");
@@ -32,9 +83,8 @@ const Home = () => {
       {/* 📌 Profil ve Bakiye */}
       <div className="profile-container">
         <img src="/image2.png" alt="Profile" className="profile-image" />
-        <h1 className="balance">1.501,12₺</h1>
       </div>
-
+     <h1 className="balance">{balance}</h1>
       {/* 📌 Grafik Alanı */}
       <div className="chart-container">
         <div className="chart">

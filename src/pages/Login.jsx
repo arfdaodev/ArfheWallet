@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
-import { verifyPassword, decryptData } from "../utils/security";
+import { decryptData } from "../utils/security";
+import { getWalletData } from "../utils/secureStorage";
+import './Login.css'
 
 function Login() {
   const [inputPassword, setInputPassword] = useState("");
   const navigate = useNavigate();
-  const [password, setPassword] = useState("");
 
   useEffect(() => {
     // Kullanıcı zaten giriş yapmışsa, direkt ana sayfaya yönlendir
@@ -15,25 +15,32 @@ function Login() {
     }
   }, [navigate]);
 
-  const handleLogin = () => {
-    const savedPassword = localStorage.getItem("walletPasswordHash"); // Kayıtlı şifreyi al
-
-    if (!savedPassword) {
-      alert("Kayıtlı şifre bulunamadı!");
+  const handleLogin = async () => {
+    // 🔥 Şifre boşsa hata ver
+    if (!inputPassword) {
+      alert("Lütfen bir şifre girin!");
       return;
     }
+    console.log("🟢 getWalletData fonksiyon tipi:", typeof getWalletData); // 🔥 Burada test ediyoruz
+    try {
+      // ✅ IndexedDB’den Private Key ve Mnemonic’i al
+      const walletData = await getWalletData(inputPassword);
 
-     // Şifre doğruysa, mnemonikleri çözüp gösterelim
-     const encryptedMnemonic = localStorage.getItem("encryptedMnemonic");
-     if (!encryptedMnemonic) {
-       alert("Hata: Şifrelenmiş mnemonikler bulunamadı!");
-       return;
-     }
- 
-     const decryptedMnemonic = decryptData(encryptedMnemonic, password);
-     alert(`Cüzdanınız açıldı! `);
-     navigate("/home");
-   };
+      if (!walletData) {
+        alert("Hata: Cüzdan verileri bulunamadı!");
+        return;
+      }
+
+      // 🔥 Başarılı giriş: Kullanıcıyı yönlendir
+      localStorage.setItem("isLoggedIn", "true");
+      alert("✅ Cüzdanınız açıldı!");
+      navigate("/home");
+
+    } catch (error) {
+      console.error("Giriş hatası:", error);
+      alert("Hata: Şifre yanlış veya cüzdan verileri çözülemedi!");
+    }
+  };
 
   return (
     <div className="container">
@@ -50,15 +57,8 @@ function Login() {
         Giriş Yap
       </button>
       <button
-        onClick={() => {
-          if (window.history.state && window.history.state.idx > 0) {
-            navigate(-1);
-          } else {
-            navigate("/", { replace: true });
-          }
-        }}
-        className="back-button-login"
-      >
+        onClick={() => navigate(-1)}
+        className="back-button-login">
         Geri
       </button>
     </div>
@@ -66,3 +66,4 @@ function Login() {
 }
 
 export default Login;
+
