@@ -21,7 +21,7 @@ import Account from './pages/Account'
 import NFT from './pages/NFT'
 import Crypto from './pages/Crypto'
 import '@ant-design/v5-patch-for-react-19';
- 
+import { Web3Provider } from "./context/Web3Context";
 
 
 
@@ -57,7 +57,7 @@ localStorage.getItem("wallet");
   return (
     <div>
      
-      
+    <Web3Provider>  
       <Routes>
        
         <Route path='/' element={<FirstLogin/>} exact/>
@@ -86,7 +86,7 @@ localStorage.getItem("wallet");
         <Route path='/nft' element={<NFT/>} exact />
 
       </Routes>
-      
+    </Web3Provider>  
     </div>
   );
 };

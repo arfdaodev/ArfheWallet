@@ -6,13 +6,9 @@ import Slipaj from "../components/menu/slipaj";
 
 
 const Account = () => {
-  const [accounts, setAccounts] = useState(["Hesap 1", "Hesap 2"]); // Başlangıçta 2 hesap olsun
+  const [accounts, setAccounts] = useState(["Hesap 1"]); // Başlangıçta 2 hesap olsun
 
-  useEffect(() => {
-    console.log("✅ Account bileşeni render edildi!");
-  }, []);
-
-  const addAccount = () => {
+     const addAccount = () => {
     if (accounts.length < 6) {
       setAccounts([...accounts, `Hesap ${accounts.length + 1}`]);
     }

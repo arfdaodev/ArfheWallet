@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { encryptData , hashPassword } from "../utils/security"; // Şifreleme fonksiyonunu al
 import "./CreatePassword.css";
-
+import { useContext } from "react";
+import { Web3Context } from "../context/Web3Context";
+import CryptoJS from "crypto-js";
 const CreatePassword = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const mnemonic = location.state?.mnemonic || ""; // Önceki sayfadan gelen mnemonikler
-
+  const { privateKey } = useContext(Web3Context);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -16,7 +18,10 @@ const CreatePassword = () => {
       alert("Mnemonikler alınamadı! Lütfen tekrar deneyin.");
       return;
     }
-
+    if (!privateKey) {
+      alert("Hata: Private Key bulunamadı!");
+      return;
+    }
     if (!password || !confirmPassword) {
       alert("Lütfen bir şifre girin!");
       return;
@@ -34,9 +39,10 @@ const CreatePassword = () => {
 
     // ✅ **AES ile mnemonikleri şifreleyerek sakla**
     const encryptedMnemonic = encryptData(mnemonic, password);
+    const encryptedPrivateKey = CryptoJS.AES.encrypt(privateKey, hashedPassword).toString();
 
     localStorage.setItem("encryptedMnemonic", encryptedMnemonic); // 🔥 Mnemonikleri sakla
-
+    localStorage.setItem("encryptedPrivateKey", encryptedPrivateKey);
     alert("Şifre ve cüzdan başarıyla kaydedildi!");
     navigate("/login");
   };
