@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './Discovery.css'
 import Bottommenu from "../components/menu/Bottommenu";
 import React from "react";

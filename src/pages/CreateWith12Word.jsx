@@ -4,7 +4,7 @@ import BackButton from "../components/button/BackButton";
 import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import { Button } from "antd";
-import { Navigate } from "react-router-dom";
+
 
 
 function CreateWith12Word  ({setWallet, setSeedPhrase})  {

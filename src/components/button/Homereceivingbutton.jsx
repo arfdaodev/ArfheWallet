@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import './Homereceivingbutton.css'
-import App from "../../App";
 function Homereceivebutton(){
     const navigate = useNavigate();
 

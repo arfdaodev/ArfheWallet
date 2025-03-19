@@ -4,8 +4,6 @@ import CreateWith12Word from '../components/button/Createwith12word'
 import CreateWith24Word from '../components/button/Createwith24word'
 import BackButton from "../components/button/BackButton";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import { Button } from 'antd';
-import generateWallet from "./CreateWith12Word"
 function App() {
   const [count, setCount] = useState(0)
   

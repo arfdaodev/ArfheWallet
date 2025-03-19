@@ -1,6 +1,5 @@
 import React from "react"; 
 import { useNavigate } from "react-router-dom";
-import App from "../../App";
 import './Createwith12word.css'
 
 function CreateWith12Word (){

@@ -13,9 +13,9 @@ const CreatePassword = () => {
 
   const handleSavePassword = async () =>{
     if (!mnemonic) {
-      alert("Mnemonikler alınamadı! Lütfen tekrar deneyin.");
-      return;
+      console.warn("⚠️ Uyarı: Mnemonikler eksik, sadece Private Key ile devam ediliyor.");
     }
+
     if (!privateKey) {
       alert("Hata: Private Key bulunamadı!");
       return;
@@ -55,7 +55,7 @@ const CreatePassword = () => {
 
     try {
       // ✅ **Private Key ve Mnemonic’i IndexedDB'ye şifreleyerek kaydet**
-      await saveWalletData(privateKey, mnemonic, password);
+      await saveWalletData(privateKey, mnemonic || "", password);
 
       sessionStorage.removeItem("mnemonic");
       sessionStorage.removeItem("privateKey");

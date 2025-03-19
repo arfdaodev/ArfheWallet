@@ -1,7 +1,6 @@
 import React from "react"; 
 import { useNavigate } from "react-router-dom";
 import './Createwith24word.css'
-import App from "../../App";
 function CreateWith24Word (){
      const navigate = useNavigate();
 

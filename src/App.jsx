@@ -33,22 +33,8 @@ function App() {
   const [seedPhrase, setSeedPhrase] = useState(null);
   const navigate = useNavigate();
   const [blockNumber, setBlockNumber] = useState(null);
+  const [provider, setProvider] = useState(null);
 
-  const providers = {
-    holesky: new JsonRpcProvider("https://eth-holesky.g.alchemy.com/v2/-UwtQKs82xJefcySHhrajydYbUX0leZ8"),
-    sepolia: new JsonRpcProvider("https://eth-sepolia.g.alchemy.com/v2/-UwtQKs82xJefcySHhrajydYbUX0leZ8"),
-  };
-  
-  
-  useEffect(() => {
-    const fetchBlockNumber = async () => {
-      const block = await provider.getBlock("latest");
-      console.log("Güncel Blok:", block);
-      setBlockNumber(block.number);
-    };
-
-    fetchBlockNumber();
-  }, []);
 
   useEffect(() => {
     const savedWallet = localStorage.getItem("walletAddress");

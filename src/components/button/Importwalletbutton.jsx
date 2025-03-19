@@ -1,7 +1,6 @@
 import React from "react"; 
 import { replace } from "react-router";
 import { useNavigate } from "react-router"; 
-import App from "../../App";
 import './Importwalletbutton.css'
 
 const ImportWalletButton = () => {
