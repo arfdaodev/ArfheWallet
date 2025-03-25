@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { saveWalletData } from "../utils/secureStorage";
 import "./CreatePassword.css";
-
+import { toast } from "react-toastify";
 const CreatePassword = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,43 +13,43 @@ const CreatePassword = () => {
 
   const handleSavePassword = async () =>{
     if (!mnemonic) {
-      console.warn("⚠️ Uyarı: Mnemonikler eksik, sadece Private Key ile devam ediliyor.");
+      toast.warn("⚠️ Uyarı: Mnemonikler eksik, sadece Private Key ile devam ediliyor.");
     }
 
     if (!privateKey) {
-      alert("Hata: Private Key bulunamadı!");
+      toast.error("Hata: Private Key bulunamadı!");
       return;
     }
     if (!password || !confirmPassword) {
-      alert("Lütfen bir şifre girin!");
+      toast.warn("Lütfen bir şifre girin!");
       return;
     }
     if (password.length < 8) {
-      alert("Şifre en az 8 karakter olmalıdır!");
+      toast.warn("Şifre en az 8 karakter olmalıdır!");
       return;
     }
     if (password.length > 16) {
-      alert("Şifre 16 karakterden uzun olmamalıdır!");
+      toast.warn("Şifre 16 karakterden uzun olmamalıdır!");
       return;
     }
     if (!/[A-Z]/.test(password)) {
-      alert("Şifre en az bir büyük harf içermeli!")
+      toast.warn("Şifre en az bir büyük harf içermeli!")
       return;
     }
     if (!/[a-z]/.test(password)) {
-      alert("Şifre en az bir küçük harf içermeli!")
+      toast.warn("Şifre en az bir küçük harf içermeli!")
       return;
     }
     if (!/\d/.test(password)) {
-      alert("Şifre en az bir rakam içermeli!")
+      toast.warn("Şifre en az bir rakam içermeli!")
       return;
     }
     if (["password", "123456", "admin", "qwerty", "letmein", "arfdao", "arfhe"].some(word => password.toLowerCase().includes(word))) {
-      alert("Bu şifre çok zayıf! Daha güçlü bir şifre seç.");
+      toast.warn("Bu şifre çok zayıf! Daha güçlü bir şifre seç.");
       return;
     }
     if (password !== confirmPassword) {
-      alert("Şifreler eşleşmiyor!");
+      toast.error("Şifreler eşleşmiyor!");
       return;
     }
 
@@ -60,12 +60,12 @@ const CreatePassword = () => {
       sessionStorage.removeItem("mnemonic");
       sessionStorage.removeItem("privateKey");
 
-      alert("✅ Şifre ve cüzdan başarıyla kaydedildi!");
+      toast.success("✅ Şifre ve cüzdan başarıyla kaydedildi!");
       navigate("/login");
 
     } catch (error) {
       console.error("Şifre kaydetme hatası:", error);
-      alert("Hata oluştu!");
+      toast.error("Hata oluştu!");
     }
   };
 

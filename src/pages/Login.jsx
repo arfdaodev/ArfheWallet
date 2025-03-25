@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getWalletData } from "../utils/secureStorage";
 import "./Login.css";
+import { toast } from "react-toastify";
 
 function Login() {
   const [inputPassword, setInputPassword] = useState("");
@@ -17,7 +18,7 @@ function Login() {
   const handleLogin = async () => {
     // 🔥 Şifre boşsa hata ver
     if (!inputPassword) {
-      alert("Lütfen bir şifre girin!");
+      toast.warn("Lütfen bir şifre girin!");
       return;
     }
     console.log("🟢 getWalletData fonksiyon tipi:", typeof getWalletData); // 🔥 Burada test ediyoruz
@@ -26,18 +27,18 @@ function Login() {
       const walletData = await getWalletData(inputPassword);
 
       if (!walletData) {
-        alert("Hata: Cüzdan verileri bulunamadı!");
+        toast.warn("Hata: Cüzdan verileri bulunamadı!");
         return;
       }
 
       // 🔥 Başarılı giriş: Kullanıcıyı yönlendir
       localStorage.setItem("isLoggedIn", "true");
-      alert("✅ Cüzdanınız açıldı!");
+      toast.success("✅ Cüzdanınız açıldı!");
       navigate("/home");
 
     } catch (error) {
       console.error("Giriş hatası:", error);
-      alert("Hata: Şifre yanlış veya cüzdan verileri çözülemedi!");
+      toast.error("Hata: Şifre yanlış veya cüzdan verileri çözülemedi!");
     }
   };
 

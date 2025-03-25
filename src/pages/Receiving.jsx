@@ -3,6 +3,9 @@ import './Receiving.css'
 import React from 'react'
 import Bottommenu from "../components/menu/Bottommenu";
 import {useEffect } from "react";
+import QRCodeComponent from "../components/button/QRCodeComponent";
+import { ethers } from "ethers";
+
 
 const Receiving = () => {
   const [walletAddress, setWalletAddress] = useState("");
@@ -25,11 +28,7 @@ const Receiving = () => {
 
       {/* QR Kod Alanı */}
       <div className="qr-container">
-        <img 
-          src="/qrkod.png" 
-          alt="QR Code" 
-          className="qr-code" 
-        />
+      <QRCodeComponent address={walletAddress} />
       </div>
 
       {/* Cüzdan Adresi */}

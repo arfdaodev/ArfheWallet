@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import BackButton from '../components/button/BackButton'
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from 'antd';
+import { toast } from "react-toastify";
 
 function App({setWallet }) {
   const [count, setCount] = useState(0);
@@ -38,7 +39,7 @@ function App({setWallet }) {
       }
     } catch (error) {
       console.error("Geçersiz mnemonic:", error);
-      alert("Geçersiz mnemonic! Lütfen doğru kelimeleri girin.");
+      toast.error("Geçersiz mnemonic! Lütfen doğru kelimeleri girin.");
     }
   }
   return (

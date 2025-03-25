@@ -20,7 +20,7 @@ import NFT from './pages/NFT'
 import Crypto from './pages/Crypto'
 import '@ant-design/v5-patch-for-react-19';
 import React, { useEffect, useState } from "react";
-import { JsonRpcProvider } from 'ethers';
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -77,8 +77,13 @@ function App() {
         <Route path='/nft' element={<NFT/>} exact />
 
       </Routes>
-      
+      <>
+      <ToastContainer position="top-right" autoClose={3000}  style={{ width: "%80" }}hideProgressBar={false} />
+      {/* Diğer bileşenler */}
+    </>
+   
     </div>
+    
   );
 };
 
