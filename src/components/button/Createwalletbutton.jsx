@@ -1,6 +1,5 @@
 import React from "react"; 
 import { Link } from "react-router";
-import App from "../../App";
 
 function CreateWalletButton(){
 return (

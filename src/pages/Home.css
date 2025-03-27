@@ -38,16 +38,17 @@
   left: -40px;
 }
 
-.network-badge {
-  background-color: #0D247C;
-  color: white;
+.network {
+  background-color: #0D247C ;
+  color: rgb(230, 230, 230);
   padding: 5px 15px;
   border-radius: 12px;
   font-size: 14px;
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
+ position: relative !important;
+ top: 50px !important;
+ left: 50px !important;
   transform: translateX(-50%);
+   ;
 }
 
 .network-name {

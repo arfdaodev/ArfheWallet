@@ -20,7 +20,7 @@ import NFT from './pages/NFT'
 import Crypto from './pages/Crypto'
 import '@ant-design/v5-patch-for-react-19';
 import React, { useEffect, useState } from "react";
-import { JsonRpcProvider } from 'ethers';
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -33,18 +33,8 @@ function App() {
   const [seedPhrase, setSeedPhrase] = useState(null);
   const navigate = useNavigate();
   const [blockNumber, setBlockNumber] = useState(null);
+  const [provider, setProvider] = useState(null);
 
-  const provider = new JsonRpcProvider("https://eth-holesky.g.alchemy.com/v2/-UwtQKs82xJefcySHhrajydYbUX0leZ8");
-
-  useEffect(() => {
-    const fetchBlockNumber = async () => {
-      const block = await provider.getBlock("latest");
-      console.log("Güncel Blok:", block);
-      setBlockNumber(block.number);
-    };
-
-    fetchBlockNumber();
-  }, []);
 
   useEffect(() => {
     const savedWallet = localStorage.getItem("walletAddress");
@@ -87,8 +77,13 @@ function App() {
         <Route path='/nft' element={<NFT/>} exact />
 
       </Routes>
-      
+      <>
+      <ToastContainer position="top-right" autoClose={3000}  style={{ width: "%80" }}hideProgressBar={false} />
+      {/* Diğer bileşenler */}
+    </>
+   
     </div>
+    
   );
 };
 
