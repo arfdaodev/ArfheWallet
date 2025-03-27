@@ -109,10 +109,11 @@ const Home = () => {
 
       <div className="assets-container">
         <h2 className="assets-title">Assets</h2>
-        <div className="asset-item">1 ARF</div>
-        <div className="asset-item">1 ETH</div>
-        <div className="asset-item">1 BTC</div>
-        <div className="asset-item">1 SOL</div>
+        <div className="asset-item" > {balance}</div>
+        <div className="asset-item">0.0 ARF</div>
+        
+        <div className="asset-item">0.0 BTC</div>
+        <div className="asset-item">0.0 SOL</div>
       </div>
 
       <Bottommenu />
