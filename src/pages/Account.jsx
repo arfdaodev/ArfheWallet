@@ -3,7 +3,6 @@ import Bottommenu from "../components/menu/Bottommenu";
 import "./Account.css";
 import { Link } from "react-router-dom";
 import { getWalletData } from "../utils/secureStorage";
-import { toast } from "react-toastify";
 
 const Account = () => {
   const [accounts, setAccounts] = useState(["Hesap 1"]); // Başlangıçta 1 hesap

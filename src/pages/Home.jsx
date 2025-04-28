@@ -7,6 +7,14 @@ import Sidebar from "../components/menu/Sidebar.jsx";
 import { ethers } from "ethers";
 import { getWalletData } from "../utils/secureStorage";
 import { NETWORKS, createProvider } from "../utils/network";
+import Web3 from 'web3'; // Web3.js'i import ettik
+import { getTokenBalances } from "../utils/alchemy";
+
+// Alchemy API URL'nizi buraya yerleştirin
+const alchemyUrl = 'https://eth-sepolia.alchemyapi.io/v2/YOUR_ALCHEMY_API_KEY'; // Sepolia test ağı
+const web3 = new Web3(new Web3.providers.HttpProvider(alchemyUrl)); // Web3 provider
+
+
 
 const Home = () => {
   const [walletAddress, setWalletAddress] = useState("");
@@ -14,7 +22,29 @@ const Home = () => {
   const [error, setError] = useState("");
   const [selectedNetwork, setSelectedNetwork] = useState("holesky");
   const [provider, setProvider] = useState(null);
+  const [assets, setAssets] = useState([]); // Token ve bakiyelerini saklamak için state
+  const [tokens, setTokens] = useState("");
 
+  useEffect(() => {
+    const fetchBalances = async () => {
+      if (!walletAddress) return;
+  
+      try {
+        console.log(`🛠 ${selectedNetwork} ağı için token bilgileri alınıyor...`);
+        const balances = await getTokenBalances(walletAddress, selectedNetwork); // Ağ bilgisini gönder!
+        console.log("📜 Token Bilgileri:", balances);
+  
+        setTokens(balances);
+      } catch (error) {
+        console.error("⚠️ Token bakiyeleri alınırken hata oluştu:", error);
+        setTokens([]);
+      }
+    };
+  
+    fetchBalances();
+  }, [walletAddress, selectedNetwork]); // Ağ değiştiğinde yeniden al!
+  
+  
   useEffect(() => {
     try {
       const newProvider = createProvider(selectedNetwork);
@@ -68,6 +98,7 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [walletAddress, provider]);
 
+
   useEffect(() => {
     const savedAddress = localStorage.getItem("walletAddress");
     if (savedAddress) {
@@ -109,10 +140,17 @@ const Home = () => {
 
       <div className="assets-container">
         <h2 className="assets-title">Assets</h2>
-        <div className="asset-item">1 ARF</div>
-        <div className="asset-item">1 ETH</div>
-        <div className="asset-item">1 BTC</div>
-        <div className="asset-item">1 SOL</div>
+        {assets.length === 0 ? (
+          <p>Yükleniyor...</p>
+        ) : (
+          <ul>
+          {tokens.map((token, index) => (
+            <li key={index}>
+              {token.name}: {token.balance} {token.symbol}
+            </li>
+          ))}
+        </ul>
+        )}
       </div>
 
       <Bottommenu />
