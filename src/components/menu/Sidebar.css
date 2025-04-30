@@ -1,16 +1,17 @@
 .menu-button {
-  position: absolute;
-  top: 75px;
-  left: 5px;
-  background: transparent;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
+  position: fixed !important;
+  top: -7.5px !important;
+  left: 0px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 20px !important;
+  cursor: pointer !important;
+  z-index: 10000;
 }
 
 .menu-icon {
-  width: 50px !important;
-  height: 50px !important;
+  width: 40px !important;
+  height: 40px !important;
 }
 
 /* Kapatma butonu */
@@ -43,7 +44,8 @@
 
 /* Sidebar açıldığında */
 .sidebar.open {
-  left: 4% !important; /* ✅ Açıldığında sidebar sağa kayacak */
+  left: 4% !important;
+  z-index: 1000000 !important; /* ✅ Açıldığında sidebar sağa kayacak */
 }
 
 /* Menü başlığı */
