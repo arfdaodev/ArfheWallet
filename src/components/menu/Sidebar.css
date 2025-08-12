@@ -1,0 +1,79 @@
+.menu-button {
+  position: fixed !important;
+  top: -7.5px !important;
+  left: 0px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 20px !important;
+  cursor: pointer !important;
+  z-index: 10000;
+}
+
+.menu-icon {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* Kapatma butonu */
+.close-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.close-icon {
+  width: 30px;
+  height: auto;
+}
+
+/* Sidebar başlangıçta kapalı */
+.sidebar {
+  position: fixed !important;
+  top: 8% !important;
+  left: -300px !important; /* ❌ `unset` yerine -300px yap! */
+  width: 250px !important;
+  height: 400px !important;
+  background: white !important;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1) !important;
+  transition: left 0.3s ease-in-out !important; /* ✅ `right` değil `left` olmalı */
+  padding: 20px !important;
+  flex-direction: column;
+  z-index: 9999 !important;
+  border-radius: 22px !important;
+}
+
+/* Sidebar açıldığında */
+.sidebar.open {
+  left: 4% !important;
+  z-index: 1000000 !important; /* ✅ Açıldığında sidebar sağa kayacak */
+}
+
+/* Menü başlığı */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Menü içeriği */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  padding: 10px 0;
+}
+
+.sidebar-menu a {
+  text-decoration: none;
+  color: #003C9D;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.sidebar-menu a:hover {
+  color: #002F7A;
+}

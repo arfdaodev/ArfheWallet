@@ -1,0 +1,102 @@
+
+  .swap-logo{
+    position: absolute;
+  top: 157px;
+  left: 185px;
+  justify-content: space-between;
+  color: black;
+  }
+
+  .settings-logo{
+    position: absolute;
+    width: 20px;
+    justify-content: space-between;
+    color: black;
+    top: 300px; /* BTC kutusunun sol altına denk gelecek */
+    left: 80px;
+  }
+  select#assest2 {
+   position: fixed !important;
+   font-size: 20px;
+   font-weight: bolder;
+   top: 69px !important;
+   right: 28px;
+   width: 25%; 
+   height: 8%;
+   border-radius: 100px !important;
+   z-index: 9999 !important;
+  }
+  select#assest3 {
+    position: fixed !important;
+    font-size: 20px;
+    font-weight: bolder;
+    top: 219px !important;
+    right: 28px;
+    width: 25%; 
+    height: 8%;
+    border-radius: 100px !important;
+    z-index: 9999 !important;
+   }
+ 
+
+  .swap-label{
+    position: fixed !important;
+    top: 30px !important;
+    left: 50px;
+  }
+  .swap-input { 
+  position: fixed !important;
+  top: 50px !important;
+  left: 35px;
+  height: 70px;
+  width: 315px;
+  
+  }
+  .swap-label2 {
+    position: fixed !important;
+    top: 180px !important;
+    left: 50px;
+    
+  }
+  .swap-input2 { 
+  position: fixed !important;
+  top: 200px !important;
+  left: 35px;
+  height: 70px;
+  width: 315px;
+
+  }
+  /* Slippage */
+  .slippage {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 315px; /* BTC kutusunun sol altına denk gelecek */
+    left: 1380px; /* X Pozisyonu BTC'nin solunda */
+    transform: translateX(-1350px);
+  }
+  
+  .slippage-icon {
+    margin-right: 1px;
+  }
+  
+  /* Takas Simülasyonu */
+  .swap-simulation {
+    width: 338px;
+    height: 278px;
+    border-radius: 23.5px;
+    border: 2px solid blue; 
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    top: 350px; /* Y Pozisyonu */
+    left: 1700px; /* X Pozisyonu */
+    transform: translateX(-1667px);
+  }
+  

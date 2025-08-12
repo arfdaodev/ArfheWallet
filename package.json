@@ -5,20 +5,37 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "react-scripts start",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "alchemy-sdk": "^3.5.4",
+    "antd": "^5.24.3",
+    "crpyto-js": "^0.0.1-security",
+    "crypto-js": "^4.2.0",
+    "ethers": "^6.13.5",
+    "lucide-react": "^0.475.0",
+    "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+<<<<<<< HEAD
     "react-router-dom": "^7.1.5"
+=======
+    "react-router-dom": "^7.1.5",
+    "react-scripts": "^5.0.1",
+    "react-toastify": "^11.0.5",
+    "web3": "^4.16.0"
+>>>>>>> Arfhe-v1.0.0-relax
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "dotenv": "^16.4.7",
     "eslint": "^9.19.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.0.0",

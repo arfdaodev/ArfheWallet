@@ -1,0 +1,61 @@
+body{
+  font-family: sans-serif;
+}
+
+
+
+/* Kart tasarımı */
+.card {
+  width: 320px;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Başlık */
+.header24 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Kelime kutularını içeren alan */
+.word-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7.5px;
+  background-color: #0d247c;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+/* Kelime kutularının stili */
+.word-box {
+  background-color: #ffffff;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.create-24-buttonimport {
+  width: 215px;
+  height: 39.1px;
+  background-color: #003C9D;
+  border: none;
+  border-radius: 23.5px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600; /* Semi-Bold */
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  margin: 20px;
+  position: relative !important;
+  top: 15px !important;
+}
+
+.create-button:hover{
+  background-color: #091a5d;
+}
