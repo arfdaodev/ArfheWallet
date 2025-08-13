@@ -3,4 +3,13 @@
     min-height: 100vh; /* full height reliably */
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+}
+
+.content-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    min-height: 0;
 }

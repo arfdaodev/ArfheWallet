@@ -1,9 +1,10 @@
 .home {
-  margin: auto;
   width: inherit;
-  height: 100%;
+  height: inherit;
   flex:1;
-  margin: 1em;
+  padding: 1em;
+  padding-top: 5em;
+  background-color: #e6e6e6;
 }
 
 .network-select {

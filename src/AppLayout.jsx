@@ -11,11 +11,7 @@ function AppLayout() {
     <div className='app-layout'>
       <ThemeProvider theme={ArfTheme}>
         <ArfBar />
-        <Box sx={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column' }}
-        >
+        <Box className="content-box">
           <Outlet />
         </Box>
         <ArfBottomBar />
