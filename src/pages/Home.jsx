@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-import { useState } from 'react'
-import './Home.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-  
-
-  return (
-    <>
-    <div className="app-container">
-      <div className='header'>
-      <h1 className="app-title">Ana Sayfa Burada Olacak</h1>
-      </div>
-      </div>
-
-      
-
-
-    </>
-  )
-}
-
-export default App
-=======
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Homereceivebutton from "../components/button/Homereceivingbutton";
@@ -172,4 +147,3 @@ const Home = () => {
 };
 
 export default Home;
->>>>>>> Arfhe-v1.0.0-relax
