@@ -52,17 +52,17 @@ function Home() {
       </Drawer>
 
       <Paper elevation={2}>
-        <Alert icon={<Check fontSize="inherit" />} severity="success">
+        <Alert icon={<Check fontSize="inherit" />} severity="success" >
           The USDT transfer of 10.00 from 0x0000..00aa to 0xf33f..d00d is successful. 
           TX ID: 0x012301230123012301230123123
-          <Button onClick={toggleNetworkDrawer}>
+          <Button>
             CHECK
           </Button>
         </Alert>
       </Paper>
 
       <Box sx={{ margin: 2, textAlign: "center" }}>
-        <Chip label={NETWORK_NAMES[network]} avatar={<Avatar src={NETWORK_AVATAR_SRC[network]} />} variant="outlined"/>
+        <Chip label={NETWORK_NAMES[network]} avatar={<Avatar src={NETWORK_AVATAR_SRC[network]} />} onClick={toggleNetworkDrawer} clickable/>
 
         <Tooltip title="Coptid">
           <Typography textAlign="center">
@@ -82,6 +82,7 @@ function Home() {
           series={[
             {
               data: [2, 5.5, 2, 8.5, 1.5, 5],
+              color: "#979797",
             },
           ]}
           height={225}
