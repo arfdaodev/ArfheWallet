@@ -51,25 +51,19 @@ function Home() {
         </div>
       </Drawer>
 
-      <Paper elevation={2}>
-        <Alert icon={<Check fontSize="inherit" />} severity="success" >
-          The USDT transfer of 10.00 from 0x0000..00aa to 0xf33f..d00d is successful. 
-          TX ID: 0x012301230123012301230123123
-          <Button>
-            CHECK
-          </Button>
-        </Alert>
-      </Paper>
-
-      <Box sx={{ margin: 2, textAlign: "center" }}>
-        <Chip label={NETWORK_NAMES[network]} avatar={<Avatar src={NETWORK_AVATAR_SRC[network]} />} onClick={toggleNetworkDrawer} clickable/>
-
-        <Tooltip title="Coptid">
-          <Typography textAlign="center">
-              0x0000..00aa
-          </Typography>
-        </Tooltip>
-      </Box>
+      { 
+      /*
+        <Paper elevation={2}>
+          <Alert icon={<Check fontSize="inherit" />} severity="success" >
+            The USDT transfer of 10.00 from 0x0000..00aa to 0xf33f..d00d is successful. 
+            TX ID: 0x012301230123012301230123123
+            <Button>
+              CHECK
+            </Button>
+          </Alert>
+        </Paper>
+        */
+      }
 
       <Paper elevation="6" variant="outlined">
         <Box sx={{ margin: 2 }}>

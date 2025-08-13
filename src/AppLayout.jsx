@@ -1,3 +1,4 @@
+import React from 'react';
 import { Outlet } from 'react-router';
 import ArfBottomBar from './components/ArfBottomBar';
 import ArfBar from './components/ArfBar';
@@ -6,11 +7,13 @@ import { ThemeProvider, Box } from '@mui/material';
 import ArfTheme from './components/ArfTheme';
 
 function AppLayout() {
+  const [network, setNetwork] = React.useState(1); 
+  
   return (
     <div className='app-layout'>
       <ThemeProvider theme={ArfTheme}>
         <Box sx={{ flexShrink: 0 }}>
-          <ArfBar />
+          <ArfBar network={network} setNetwork={setNetwork}/>
         </Box>
 
         <Box className="content-box">
