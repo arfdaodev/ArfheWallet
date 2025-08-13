@@ -1,0 +1,19 @@
+.splash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.splash img {
+  animation: splashAnim 1s infinite ease-in-out forwards;
+}
+
+@keyframes splashAnim {
+  0%   { opacity: 0; }
+
+  50%  { opacity: 1; }
+
+  100%  { opacity: 0; }
+}

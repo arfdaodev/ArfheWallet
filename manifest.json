@@ -2,13 +2,15 @@
     "manifest_version": 3,
     "name": "Arfhe",
     "version": "1.0.0",
+    
     "background":{
         "service_worker": "service-worker.js",
         "type": "module"
     },
+
     "content_security_policy": {
-  "extension_pages": "script-src 'self' 'unsafe-eval'; object-src 'self'"
-},
+      "extension_pages": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    },
 
     "action": { 
         "default_popup": "index.html"
@@ -22,7 +24,6 @@
         "https://*/*"
     ],
  
-    
     "description": "A basic example extension with only required keys",
     "icons": {
       "48": "images/icon32.png",
