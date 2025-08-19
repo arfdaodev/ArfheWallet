@@ -5,7 +5,7 @@ function Splash() {
   const navigate = useNavigate();
 
   setTimeout(() => {
-    navigate("home", { viewTransition: true })
+    navigate("auth", { viewTransition: true })
   }, 5000);
 
   return (

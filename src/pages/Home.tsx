@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Drawer, FormControl, InputLabel, MenuItem, Select, Alert, Typography, Box, Card, Paper, List, ListItem, ListItemButton, ListItemText, ListItemIcon, Icon, Tooltip, Avatar, Chip } from "@mui/material";
 import "./Home.css";
 import { Label, Check, Circle, ContentCopy } from "@mui/icons-material";
 import { LineChart } from "@mui/x-charts";
+import { AppContext, WalletContext } from "../AppContext";
+import { useArfBar } from "../components/ArfBarContext";
 
 const NETWORK_NAMES = [
   "UNKNOWN",
@@ -19,16 +21,50 @@ const NETWORK_AVATAR_SRC = [
 ]
 
 function Home() {
+  const wallet_context = React.useContext<AppContext | undefined>(WalletContext);
+  if (!wallet_context)
+    return;
+
+  const { setTitle, setText } = useArfBar();
+
+  const [active, setActive] = React.useState(
+    wallet_context.accountManager.GetActiveIndex()
+  )
+
   const [network, setNetwork] = React.useState(1);
   const [networkDrawerOpen, setNetworkDrawerOpen] = React.useState(false);
 
-  const handleNetworkChange = (event) => {
+  const getActiveTitle = () => {
+    const account = wallet_context.accountManager.accounts[active];
+    return account?.GetName() ?? "Unnamed";
+  }
+
+  const getActiveText = () => {
+    const account = wallet_context.accountManager.accounts[active];
+
+    let text = account?.GetPubKey();
+
+    if (text) {
+      const first = text.slice(0, 6);
+      const last = text.slice(-4);
+      text = first + "...." + last;
+    }
+
+    return text ?? "Unnamed";
+  }
+
+  const handleNetworkChange = (event: any) => {
     setNetwork(event.target.value)
   };
 
   const toggleNetworkDrawer = () => {
     setNetworkDrawerOpen(!networkDrawerOpen)
   }
+
+  useEffect(() => {
+    setTitle(getActiveTitle());
+    setText(getActiveText());
+  })
 
   return (
     <div className='home'>
@@ -65,7 +101,7 @@ function Home() {
         */
       }
 
-      <Paper elevation="6" variant="outlined">
+      <Paper elevation={6} variant="outlined">
         <Box sx={{ margin: 2 }}>
           <Typography variant="h3" textAlign="center" fontWeight={500}>
             $0.00

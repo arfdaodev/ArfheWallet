@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Module/ESM Settings
+    "module": "esnext",                  // emit modern ESM
+    "moduleResolution": "bundler",       // bundler-style resolution (no .js required)
+    "target": "esnext",                  // latest JS output
+    "jsx": "react-jsx",                  // React 17+ JSX transform
+    "isolatedModules": true,             // needed for Vite/ESBuild
+    "verbatimModuleSyntax": true,        // preserves `import type` etc.
+
+    // Declarations & Maps
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    // Strictness
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+
+    // Module detection
+    "moduleDetection": "force",
+    "noUncheckedSideEffectImports": true
+
+    // Add if you need Node APIs:
+    // "lib": ["esnext", "dom"],
+    // "types": ["node"]
+  }
+}

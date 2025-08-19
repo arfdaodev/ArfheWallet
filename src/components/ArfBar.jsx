@@ -1,7 +1,9 @@
 import React from "react";
-import { AppBar, Box, Button, Toolbar, Typography, IconButton, FormControl, InputLabel, Select, MenuItem, Drawer, Avatar, Chip} from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography, IconButton, FormControl, InputLabel, Select, MenuItem, Drawer, Avatar, Chip, Alert} from "@mui/material";
 // import { MenuIcon } from "@mui/icons-material";
 import { Menu } from "@mui/icons-material";
+import { AppContext, WalletContext } from "../AppContext";
+import { useArfBar } from "./ArfBarContext";
 import "./ArfBar.css";
 
 const NETWORK_NAMES = [
@@ -22,6 +24,19 @@ function ArfBar({
   network,
   setNetwork
 }) {
+  const context = React.useContext<AppContext | undefined>(WalletContext);
+  if (context == undefined) {
+    return <Alert severity="error">AppContext is lost</Alert>;
+  }
+  
+  const { title, text } = useArfBar();
+  /*
+  const [activeAccount, setActiveAccount] = React.useState(-1);
+  
+  const account = context.accountManager.GetActive();
+  const accountName = account?.GetName() ?? "";
+  const accountKey = account?.GetPublicKey() ?? "";
+  */
 
   const [networkDrawerOpen, setNetworkDrawerOpen] = React.useState(false);
   
@@ -70,10 +85,10 @@ function ArfBar({
             </IconButton>
             <Box className="arf-toolbar-name">
               <Typography textAlign="center" fontSize={12}>
-                biar.arf
+                {title}
               </Typography>
               <Typography textAlign="center" fontSize={12}>
-                0x0000..00aa
+                {text}
               </Typography>
             </Box>
 
