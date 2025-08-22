@@ -1,7 +1,7 @@
 .arf-bar {
   width: 100%;
   flex-shrink: 0;
-  color: aliceblue;
+  color: rgb(54, 54, 54);
 }
 .arf-toolbar {
   justify-content: space-between;

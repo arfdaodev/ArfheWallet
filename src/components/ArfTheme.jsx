@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material"
 
 const ArfTheme = createTheme({
+  /*
   palette: {
     primary: {
       main: '#1b1b1b',
@@ -10,12 +11,14 @@ const ArfTheme = createTheme({
       primary: '#ffffff',  // default text color
     },
   },
+  */
   typography: {
     fontFamily: [
       "Funnel Display",
       "sans-serif",
     ].join(','),
   },
+  /*
   components: {
     MuiTypography: {
       styleOverrides: {
@@ -140,6 +143,7 @@ const ArfTheme = createTheme({
       },
     },
   },
+  */
 });
 
 

@@ -11,7 +11,7 @@ interface GradientLineProps {
 
 export default function ArfGraph({
   data,
-  stroke = "#ffffff",
+  stroke = "#1d1d1d",
   height = 180,
 }: GradientLineProps) {
   return (
@@ -23,7 +23,7 @@ export default function ArfGraph({
         >
           <defs>
             <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={stroke} stopOpacity={0.4} />
+              <stop offset="0%" stopColor={stroke} stopOpacity={0.1} />
               <stop offset="100%" stopColor={stroke} stopOpacity={0} />
             </linearGradient>
           </defs>
@@ -43,7 +43,7 @@ export default function ArfGraph({
             strokeWidth={2.5}
             fill="url(#lineGradient)"
             dot={false}
-            isAnimationActive={false}
+            isAnimationActive={true}
           />
         </AreaChart>
       </ResponsiveContainer>
