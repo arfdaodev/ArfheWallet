@@ -1,9 +1,19 @@
 .arf-bar {
   width: 100%;
   flex-shrink: 0;
+  color: aliceblue;
 }
 .arf-toolbar {
   justify-content: space-between;
+}
+
+.network-select {
+  padding: 20px;
+  background-color: #1b1b1b;
+}
+
+#network-select-label {
+  height: 40px;
 }
 
 .arf-toolbar-name {

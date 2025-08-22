@@ -3,8 +3,9 @@ import { Button, Drawer, FormControl, InputLabel, MenuItem, Select, Alert, Typog
 import "./Home.css";
 import { Label, Check, Circle, ContentCopy } from "@mui/icons-material";
 import { LineChart } from "@mui/x-charts";
-import { AppContext, WalletContext } from "../AppContext";
-import { useArfBar } from "../components/ArfBarContext";
+import { AppContext, WalletContext } from "../AppContext.js";
+import { useArfBar } from "../components/ArfBarContext.js";
+import ArfGraph from "../components/ArfGraph.js";
 
 const NETWORK_NAMES = [
   "UNKNOWN",
@@ -19,6 +20,21 @@ const NETWORK_AVATAR_SRC = [
   "discorvery.png",
   "discorvery.png",
 ]
+
+const TOKENS = [
+  { name: "ETH", icon: "eth.png" },
+  { name: "USDT", icon: "usdt.png" },
+  { name: "ARF", icon: "coin.svg" },
+];
+
+const demoData = [
+  { x: 0, y: 2 },
+  { x: 1, y: 5.5 },
+  { x: 2, y: 2 },
+  { x: 3, y: 8.5 },
+  { x: 4, y: 1.5 },
+  { x: 5, y: 5 },
+];
 
 function Home() {
   const wallet_context = React.useContext<AppContext | undefined>(WalletContext);
@@ -101,46 +117,54 @@ function Home() {
         */
       }
 
-      <Paper elevation={6} variant="outlined">
-        <Box sx={{ margin: 2 }}>
-          <Typography variant="h3" textAlign="center" fontWeight={500}>
+      <Box sx={{ padding: 2 }} className="infobox">
+        {/* text section (with padding) */}
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="h3" fontWeight={700}>
             $0.00
           </Typography>
+          <Typography variant="body1" color="success.main" fontWeight={700}>
+            +0.00 (0%)
+          </Typography>
         </Box>
-        <LineChart
-          xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-          series={[
-            {
-              data: [2, 5.5, 2, 8.5, 1.5, 5],
-              color: "#979797",
-            },
-          ]}
-          height={225}
-        />
-      </Paper>
 
-      <Box padding="5">
-        <List>
-          {[
-            { name: "ARF", icon: "coin.svg" },
-            { name: "ETH", icon: "eth.png" },
-            { name: "USDT", icon: "usdt.png" },
-          ].map(({ name, icon }) => (
-            <ListItem key={name} disablePadding>
-              <Paper sx={{ flex: 1, width: "100%" }}>
-                <ListItemButton sx={{ justifyContent: "space-between" }}>
-                  <Box display="flex" alignItems="center">
-                    <ListItemIcon sx={{ minWidth: "auto", marginRight: 1 }}>
-                      <Avatar src={icon} />
-                    </ListItemIcon>
-                    <ListItemText primary={name} />
-                  </Box>
-                  <ListItemText
-                    primary="0.00"
-                    sx={{ textAlign: "right", flex: "0 0 auto" }}
-                  />
-                </ListItemButton>
-              </Paper>
+        {/* graph section (full width, ignoring padding) */}
+        <Box sx={{ mx: -2, mb: -2 }}> 
+          <ArfGraph data={demoData}/>
+        </Box>
+      </Box>
+      
+      { /*<LineChart
+        xAxis={[
+          { data: [1, 2, 3, 5, 8, 10], }
+        ]}
+        series={[
+          {
+            data: [2, 5.5, 2, 8.5, 1.5, 5],
+            color: "#979797",
+          },
+        ]}
+        height={225}
+      /> */ }
+
+      
+
+      <Box className="list">
+        <List >
+          {TOKENS.map(({ name, icon }) => (
+            <ListItem
+              className="list-item"
+              key={name}
+              secondaryAction={
+                <Typography fontWeight={600} textAlign="right">
+                  0.00
+                </Typography>
+              }
+            >
+              <ListItemIcon>
+                <Avatar src={icon} />
+              </ListItemIcon>
+              <ListItemText primary={name} />
             </ListItem>
           ))}
         </List>

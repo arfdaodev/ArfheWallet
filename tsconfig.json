@@ -5,12 +5,12 @@
     "outDir": "./dist",
 
     // Module/ESM Settings
-    "module": "esnext",                  // emit modern ESM
-    "moduleResolution": "bundler",       // bundler-style resolution (no .js required)
-    "target": "esnext",                  // latest JS output
-    "jsx": "react-jsx",                  // React 17+ JSX transform
-    "isolatedModules": true,             // needed for Vite/ESBuild
-    "verbatimModuleSyntax": true,        // preserves `import type` etc.
+    "module": "esnext", // emit modern ESM
+    "moduleResolution": "nodenext", // bundler-style resolution (no .js required)
+    "target": "esnext", // latest JS output
+    "jsx": "react-jsx", // React 17+ JSX transform
+    "isolatedModules": true, // needed for Vite/ESBuild
+    // "verbatimModuleSyntax": true, // preserves `import type` etc.
 
     // Declarations & Maps
     "declaration": true,
@@ -24,8 +24,8 @@
     "skipLibCheck": true,
 
     // Module detection
-    "moduleDetection": "force",
-    "noUncheckedSideEffectImports": true
+    "moduleDetection": "force"
+    // "noUncheckedSideEffectImports": true
 
     // Add if you need Node APIs:
     // "lib": ["esnext", "dom"],

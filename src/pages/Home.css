@@ -1,18 +1,30 @@
 .home {
   width: inherit;
-  height: inherit;
+  height: 100%;
   flex:1;
-  padding: 1em;
+  padding: 0;
   padding-top: 5em;
   padding-bottom: 5em;
-  background-color: #e6e6e6;
+  /* background-color: #e6e6e6; */
+  background-color: #1b1b1b;
+  /* background: linear-gradient(to right, #2c2721, #1b1b1b, #1b1b1b, #1b1b1b, #2c2721); */
 }
 
-.network-select {
-  padding: 20px;
-  margin-top: 50px;
+.infobox {
+  min-height: 15rem;
+  color: white;
+  background-color: #1b1b1b;
+  filter: drop-shadow(0px 25px 15px #1a1a1a70);
 }
 
-#network-select-label {
-  height: 40px;
+.list {
+  margin: 0;
+  margin-top: 0rem;
+}
+
+.list-item {
+  border-bottom: 1px solid #303030;
+  border-radius: 0;
+  color: white;
+  /* margin-bottom: 1rem; */
 }
